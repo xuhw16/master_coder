@@ -6,7 +6,7 @@ using namespace std;
 	5   6   7   8 
 	9  10  11  12
 	13 14  15  16
-	counterclock  print matrixs.
+	clockwise  print matrixs.
 	left_top to right_top->right_top to right_bottom->
 	->right_bottom to left_bottom->left_bottom to left_top
 	
