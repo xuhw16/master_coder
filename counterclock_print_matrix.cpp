@@ -47,7 +47,7 @@ void print(vector<vector<int>>& mat, int start, vector<int>&result) {
 int main() {
 	int n=0;
 	cin>>n;
-	vector<vector<int>> mat(4, vector<int>(4, 0));
+	vector<vector<int>> mat(n, vector<int>(n, 0));
 	//input 
 	for (int i = 0; i < mat.size(); i++) {
 		for (int j = 0; j < mat[0].size(); j++) {
