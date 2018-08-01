@@ -19,19 +19,19 @@ void print(vector<vector<int>>& mat, int start, vector<int>&result) {
 	for (int i = start; i <= endx; i++)
 		result.push_back(mat[start][i]);
     //right_top to right_bottom 
-	//atleat 2 cols
+	//at least 2 cols
 	if (endy > start) {
 		for (int i = start + 1; i <= endy; i++)
 			result.push_back(mat[i][endx]);
 	}
 	//right_bottom to left_bottom
-	//atleat 2 cols 2 rows
+	//at least 2 cols 2 rows
 	if (endx > start  && endy > start) {
 		for (int i = endx - 1; i >= start; i--)
 			result.push_back(mat[endy][i]);
 	}
 	//left_bottom to left_top
-	//atleat 2 cols 3 rows
+	//at least 2 cols 3 rows
 	if (endy > start + 1 && endx > start) {
 		for (int i = endy - 1; i >= start+1; i--)
 			result.push_back(mat[i][start]);
