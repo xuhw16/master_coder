@@ -12,7 +12,7 @@ using namespace std;
 	
 	input: n  //n*n matrixs
 	       n*n int numbers
-	output:counterclock vector.
+	output:clockwise vector.
 	
 */
 void print(vector<vector<int>>& mat, int start, vector<int>&result) {
