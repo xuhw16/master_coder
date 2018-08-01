@@ -9,6 +9,11 @@ using namespace std;
 	counterclock  print matrixs.
 	left_top to right_top->right_top to right_bottom->
 	->right_bottom to left_bottom->left_bottom to left_top
+	
+	input: n  //n*n matrixs
+	       n*n int numbers
+    output:ounterclock vector.
+	
 */
 void print(vector<vector<int>>& mat, int start, vector<int>&result) {
 	int rows = mat.size();
@@ -40,6 +45,8 @@ void print(vector<vector<int>>& mat, int start, vector<int>&result) {
 }
 
 int main() {
+	int n=0;
+	cin>>n;
 	vector<vector<int>> mat(4, vector<int>(4, 0));
 	//input 
 	for (int i = 0; i < mat.size(); i++) {
