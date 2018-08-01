@@ -12,7 +12,7 @@ using namespace std;
 	
 	input: n  //n*n matrixs
 	       n*n int numbers
-    output:ounterclock vector.
+	output:counterclock vector.
 	
 */
 void print(vector<vector<int>>& mat, int start, vector<int>&result) {
@@ -23,7 +23,7 @@ void print(vector<vector<int>>& mat, int start, vector<int>&result) {
 	//left_top to right_top
 	for (int i = start; i <= endx; i++)
 		result.push_back(mat[start][i]);
-    //right_top to right_bottom 
+	//right_top to right_bottom 
 	//at least 2 cols
 	if (endy > start) {
 		for (int i = start + 1; i <= endy; i++)
