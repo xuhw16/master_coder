@@ -10,6 +10,8 @@ insert sort: o(n^2),stable sort.
 merge sort:o(nlog(n)),table sort.(not in place)
 heap sort:o(nlog(n)),distable sort. (in place)
 quick_sort:o(nlog(n)),distable sort. (in place)
+
+cout_sort:o(n),stable (input no more than k)
 */
 //bubble sort
 void bubble_sort(vector<int>&result) {
@@ -130,6 +132,25 @@ void quick_sort(vector<int>&result,int left,int right) {
 	}
 }
 
+//counting sort 
+//input no more than k
+vector<int> cout_sort(vector<int>result,int k) {
+	int nums = result.size();
+	vector<int> re(nums, 0);
+	vector<int> tmp(k+1, 0);
+	for (int i = 0; i < nums; i++) {
+		tmp[result[i]] += 1;
+	}
+	for (int i = 1; i <tmp.size(); i++) {
+		tmp[i] += tmp[i - 1];
+	}
+	for (int i = nums - 1; i >= 0; i--) {
+		re[tmp[result[i]]-1] = result[i];
+		tmp[result[i]]--;
+	}
+	return re;
+}
+
 int main() {
 	//input
 	int n = 0;
@@ -137,7 +158,8 @@ int main() {
 	vector<int>result(n, 0);
 	for (int i = 0; i < result.size(); i++)
 		cin >> result[i];
-	quick_sort(result,0,result.size()-1);
+	cout_sort(result,10);
+	//quick_sort(result,0,result.size()-1);
 	//heap_sort(result);
 	//merge_sort(result);
 	//insert_sort(result);
