@@ -7,7 +7,8 @@ input:  n //size of sorted numbers
 sort algorithm:
 bubble sort: o(n^2),stable sort.
 insert sort: o(n^2),stable sort.
-merge sort:o(nlog(n)),distable sort.
+merge sort:o(nlog(n)),distable sort.(not in place)
+heap sort:o(nlog(n)),distable sort. (in place)
 */
 //bubble sort
 void bubble_sort(vector<int>&result) {
@@ -78,6 +79,36 @@ void merge_sort(vector<int>&result) {
 	merge_all(result, left_re, right_re);
 }
 
+//heap_sort
+void heap_keep(vector<int> &result, int i,int last) {
+	int target = i;
+	if (2 * i + 1 <= last&&result[2 * i + 1] > result[i])
+		target = 2 * i + 1;
+	if (2 * i + 2 <= last&&result[2 * i + 2] > result[target])
+		target = 2 * i + 2;
+	if (target != i) {
+		swap(result[target], result[i]);
+		heap_keep(result, target,last);
+	}
+}
+void heap_create(vector<int>&result) {
+	int nums = result.size();
+	for (int i = nums/ 2; i >= 0; i--) {
+		heap_keep(result, i,nums-1);
+	}
+}
+void heap_sort(vector<int>&result) {
+	int nums = result.size();
+	heap_create(result);
+	int j = nums - 1;
+	for (int i = nums - 1; i >= 0; i--) {
+		swap(result[0], result[j]);
+		j--;
+		heap_keep(result, 0,j);
+	}
+}
+
+
 int main() {
 	//input
 	int n = 0;
@@ -85,7 +116,8 @@ int main() {
 	vector<int>result(n, 0);
 	for (int i = 0; i < result.size(); i++)
 		cin >> result[i];
-	merge_sort(result);
+	heap_sort(result);
+	//merge_sort(result);
 	//insert_sort(result);
 	//bubble_sort(result);
 
