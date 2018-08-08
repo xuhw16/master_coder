@@ -151,6 +151,43 @@ vector<int> cout_sort(vector<int>result,int k) {
 	return re;
 }
 
+//radix sort
+//based on cout_sort
+void rcout_sort(vector<int>&result, vector<int>&res,int k) {
+	int nums = result.size();
+	vector<int> re(nums, 0);
+	vector<int> tmp(k+1, 0);
+	for (int i = 0; i < nums; i++) {
+		tmp[result[i]] += 1;
+	}
+	for (int i = 1; i <tmp.size(); i++) {
+		tmp[i] += tmp[i - 1];
+	}
+	for (int i = nums - 1; i >= 0; i--) {
+		re[tmp[result[i]]-1] = res[i];
+		tmp[result[i]]--;
+	}
+	res=re;
+}
+void radix_sort(vector<int>&result,int d) {
+	for (int i = 0; i < d; i++) {
+		vector<int> tmp(result.size(), 0);
+		for (int j = 0; j < result.size(); j++) {
+			int tm = result[j];
+			int k = i;
+			while (k >0) {
+				tm/= 10;
+				k--;
+			}
+			tm %= 10;
+			tmp[j]=tm;
+		}
+		
+		rcout_sort(tmp, result, 9);
+	}
+}
+
+
 int main() {
 	//input
 	int n = 0;
@@ -158,7 +195,8 @@ int main() {
 	vector<int>result(n, 0);
 	for (int i = 0; i < result.size(); i++)
 		cin >> result[i];
-	cout_sort(result,10);
+	radix_sort(result,9);
+	//cout_sort(result,10);
 	//quick_sort(result,0,result.size()-1);
 	//heap_sort(result);
 	//merge_sort(result);
