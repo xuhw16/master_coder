@@ -7,7 +7,7 @@ input:  n //size of sorted numbers
 sort algorithm:
 bubble sort: o(n^2),stable sort.
 insert sort: o(n^2),stable sort.
-merge sort:o(nlog(n)),distable sort.(not in place)
+merge sort:o(nlog(n)),table sort.(not in place)
 heap sort:o(nlog(n)),distable sort. (in place)
 quick_sort:o(nlog(n)),distable sort. (in place)
 */
