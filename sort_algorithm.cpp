@@ -9,6 +9,7 @@ bubble sort: o(n^2),stable sort.
 insert sort: o(n^2),stable sort.
 merge sort:o(nlog(n)),distable sort.(not in place)
 heap sort:o(nlog(n)),distable sort. (in place)
+quick_sort:o(nlog(n)),distable sort. (in place)
 */
 //bubble sort
 void bubble_sort(vector<int>&result) {
@@ -108,6 +109,26 @@ void heap_sort(vector<int>&result) {
 	}
 }
 
+//quick_sort
+int sort_partion(vector<int>&result, int left, int right) {
+	int x = result[right];
+	int i = left - 1;
+	for (int j = left; j < right; j++) {
+		if (result[j] < x) {
+			i++;
+			swap(result[i], result[j]);
+		}
+	}
+	swap(result[i + 1], result[right]);
+	return i + 1;
+}
+void quick_sort(vector<int>&result,int left,int right) {
+	if (left < right) {
+		int q = sort_partion(result, left, right);
+		quick_sort(result, left, q - 1);
+		quick_sort(result, q + 1, right);
+	}
+}
 
 int main() {
 	//input
@@ -116,7 +137,8 @@ int main() {
 	vector<int>result(n, 0);
 	for (int i = 0; i < result.size(); i++)
 		cin >> result[i];
-	heap_sort(result);
+	quick_sort(result,0,result.size()-1);
+	//heap_sort(result);
 	//merge_sort(result);
 	//insert_sort(result);
 	//bubble_sort(result);
