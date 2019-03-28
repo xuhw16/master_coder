@@ -96,7 +96,7 @@ void heap_keep(vector<int> &result, int i,int last) {
 }
 void heap_create(vector<int>&result) {
 	int nums = result.size();
-	for (int i = nums/ 2; i >= 0; i--) {
+	for (int i = nums/ 2-1; i >= 0; i--) {
 		heap_keep(result, i,nums-1);
 	}
 }
